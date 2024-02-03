@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    button {
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px 20px;
+    }
+
+    #yesButton {
+      background-color: green;
+      color: white;
+    }
+
+    #noButton {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <img id="mainGif" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Bear with Roses">
+  <p>Will you be my valentine?</p>
+  <button id="yesButton" onclick="showYes()">Yes</button>
+  <button id="noButton" onclick="showNo()">No</button>
+</div>
+
+<script>
+  let currentCondition = 0;
+  let zoomLevel = 16;
+
+  function showYes() {
+    document.getElementById('mainGif').src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
+    document.querySelector('p').innerText = 'Yaaay!!';
+    updateZoom('yesButton');
+    
+    // Hide buttons
+    document.getElementById('yesButton').style.display = 'none';
+    document.getElementById('noButton').style.display = 'none';
+  }
+
+  function showNo() {
+    let noButton = document.getElementById('noButton');
+    
+    if (currentCondition < conditions.length) {
+      noButton.innerText = conditions[currentCondition];
+      updateZoom('yesButton');
+      currentCondition++;
+    } else {
+      currentCondition = 0; // Reset conditions when they are exhausted
+    }
+  }
+
+  function updateZoom(buttonId) {
+    let button = document.getElementById(buttonId);
+    
+    if (zoomLevel < 40) {
+      button.style.fontSize = zoomLevel + 'px';
+      zoomLevel += 2;
+    }
+  }
+
+  const conditions = [
+    "Are you sure?",
+    "Really sure?",
+    "Really sure",
+    "Are you positive???",
+    "Pookie please",
+    "Just think about it",
+    "If you say no, I'll be very sad",
+    "I'll be very very sad",
+    "I'll be very very very sad",
+    "I'll be very very very very sad",
+    "Ok fine, I'll stop asking...",
+    "Just kidding, PLEASE SAY YES",
+    "I'll be very very very very very sad"
+  ];
+</script>
+
+</body>
+</html>
